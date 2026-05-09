@@ -721,7 +721,103 @@
 
     .youtube-link { color: #ff2d78 !important; }
 
-    
+    /* ── SLIDESHOW ── */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .slideshow .slide {
+      display: none;
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .slideshow .slide.active {
+      display: block;
+    }
+
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-btn:hover { background: var(--accent); color: #000; }
+    .slide-prev { left: 12px; }
+    .slide-next { right: 12px; }
+
+    .slide-dots {
+      position: absolute;
+      bottom: 12px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .slide-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .slide-dots .dot.active { background: var(--accent); }
+
+
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* ── FEATURED PROJECT ── */
+    .project-featured {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .project-featured:hover { border-color: rgba(0,229,204,0.4); }
+
+    .project-featured .slideshow {
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-featured .slide {
+      height: 420px;
+    }
+
+    .project-featured-info {
+      padding: 28px 32px;
+    }
+
+    .project-featured-info .project-title {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
     .edu-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1040,42 +1136,52 @@
       <h2 class="section-title">My Projects</h2>
       <div class="section-line"></div>
     </div>
-    <div class="projects-grid">
+    <div class="projects-list">
 
-      <div class="project-card reveal">
-        <div class="project-tag">Unreal Engine · C++ · 3D</div>
-        <h3 class="project-title">Q*bert Remake</h3>
-
-        <!-- Screenshots -->
-        <div class="project-screenshots">
-          <img src="qbert-menu.jpg" alt="Q*bert Main Menu" />
-          <img src="qbert-gameplay.jpg" alt="Q*bert Gameplay" />
-          <img src="qbert-leaderboard.jpg" alt="Q*bert Leaderboard" />
+      <!-- FEATURED PROJECT - Full width -->
+      <div class="project-featured reveal">
+        <div class="slideshow" id="qbert-slideshow">
+          <img class="slide active" src="qbert-menu.jpg" alt="Q*bert Main Menu" />
+          <img class="slide" src="qbert-gameplay.jpg" alt="Q*bert Gameplay" />
+          <img class="slide" src="qbert-leaderboard.jpg" alt="Q*bert Leaderboard" />
+          <button class="slide-btn slide-prev" onclick="changeSlide('qbert-slideshow', -1)">&#8592;</button>
+          <button class="slide-btn slide-next" onclick="changeSlide('qbert-slideshow', 1)">&#8594;</button>
+          <div class="slide-dots">
+            <span class="dot active" onclick="goToSlide('qbert-slideshow', 0)"></span>
+            <span class="dot" onclick="goToSlide('qbert-slideshow', 1)"></span>
+            <span class="dot" onclick="goToSlide('qbert-slideshow', 2)"></span>
+          </div>
         </div>
-
-        <p class="project-desc">A 3D remake of the classic arcade game Q*bert, built in Unreal Engine. The player navigates a pyramid of cubes, changing tile colors while avoiding enemies. Features include a lives system, score tracking, and a persistent leaderboard.</p>
-        <div class="project-links">
-          <a href="#" class="project-link youtube-link"><span class="project-link-icon">▶</span> YouTube — Coming Soon</a>
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-tag">Unity · C# · 2D Platformer</div>
-        <h3 class="project-title">Project Beta</h3>
-        <p class="project-desc">Describe the game mechanics, your role in the project, and what you learned while building it. Mention specific systems you implemented.</p>
-        <div class="project-links">
-          <a href="#" class="project-link"><span class="project-link-icon">⟶</span> itch.io</a>
-          <a href="#" class="project-link"><span class="project-link-icon">⟶</span> GitHub</a>
+        <div class="project-featured-info">
+          <div class="project-tag">Unreal Engine · Blueprints · C++ · 3D</div>
+          <h3 class="project-title">Q*bert Remake</h3>
+          <p class="project-desc">A 3D remake of the classic arcade game Q*bert, built in Unreal Engine. The player navigates a pyramid of cubes, changing tile colors while avoiding enemies. Features include a lives system, score tracking, and a persistent leaderboard.</p>
+          <div class="project-links">
+            <a href="#" class="project-link youtube-link"><span class="project-link-icon">▶</span> YouTube — Coming Soon</a>
+          </div>
         </div>
       </div>
 
-      <div class="project-card reveal">
-        <div class="project-tag">Unity · C# · Prototype</div>
-        <h3 class="project-title">Project Gamma</h3>
-        <p class="project-desc">Another project description here. What genre? What was the core mechanic you were exploring? What technology or technique did you practice?</p>
-        <div class="project-links">
-          <a href="#" class="project-link"><span class="project-link-icon">⟶</span> itch.io</a>
-          <a href="#" class="project-link"><span class="project-link-icon">⟶</span> GitHub</a>
+      <!-- OTHER PROJECTS GRID -->
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="project-tag">Unity · C# · 2D Platformer</div>
+          <h3 class="project-title">Project Beta</h3>
+          <p class="project-desc">Describe the game mechanics, your role in the project, and what you learned while building it. Mention specific systems you implemented.</p>
+          <div class="project-links">
+            <a href="#" class="project-link"><span class="project-link-icon">⟶</span> itch.io</a>
+            <a href="#" class="project-link"><span class="project-link-icon">⟶</span> GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-tag">Unity · C# · Prototype</div>
+          <h3 class="project-title">Project Gamma</h3>
+          <p class="project-desc">Another project description here. What genre? What was the core mechanic you were exploring? What technology or technique did you practice?</p>
+          <div class="project-links">
+            <a href="#" class="project-link"><span class="project-link-icon">⟶</span> itch.io</a>
+            <a href="#" class="project-link"><span class="project-link-icon">⟶</span> GitHub</a>
+          </div>
         </div>
       </div>
 
@@ -1200,6 +1306,29 @@
       });
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
+
+    // Slideshow
+    function changeSlide(id, dir) {
+      const ss = document.getElementById(id);
+      const slides = ss.querySelectorAll('.slide');
+      const dots = ss.querySelectorAll('.dot');
+      let current = [...slides].findIndex(s => s.classList.contains('active'));
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (current + dir + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function goToSlide(id, index) {
+      const ss = document.getElementById(id);
+      const slides = ss.querySelectorAll('.slide');
+      const dots = ss.querySelectorAll('.dot');
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+    }
   </script>
 </body>
 </html>
