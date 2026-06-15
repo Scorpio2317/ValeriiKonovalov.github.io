@@ -1164,17 +1164,32 @@
       </div>
 
       <!-- OTHER PROJECTS GRID -->
-      <div class="projects-grid">
-        <div class="project-card reveal">
-          <div class="project-tag">Unity · C# · 2D Platformer</div>
-          <h3 class="project-title">Project Beta</h3>
-          <p class="project-desc">Describe the game mechanics, your role in the project, and what you learned while building it. Mention specific systems you implemented.</p>
-          <div class="project-links">
-            <a href="#" class="project-link"><span class="project-link-icon">⟶</span> itch.io</a>
-            <a href="#" class="project-link"><span class="project-link-icon">⟶</span> GitHub</a>
+      <!-- FEATURED PROJECT - Drift Masters -->
+      <div class="project-featured reveal">
+        <div class="slideshow" id="drift-slideshow">
+          <img class="slide active" src="DriftMasters_MainMenu.png" alt="Drift Masters Main Menu" />
+          <img class="slide" src="DriftMasters_MapSelection.png" alt="Drift Masters Map Selection" />
+          <img class="slide" src="DriftMasters_GameScene.png" alt="Drift Masters Gameplay" />
+          <button class="slide-btn slide-prev" onclick="changeSlide('drift-slideshow', -1)">&#8592;</button>
+          <button class="slide-btn slide-next" onclick="changeSlide('drift-slideshow', 1)">&#8594;</button>
+          <div class="slide-dots">
+            <span class="dot active" onclick="goToSlide('drift-slideshow', 0)"></span>
+            <span class="dot" onclick="goToSlide('drift-slideshow', 1)"></span>
+            <span class="dot" onclick="goToSlide('drift-slideshow', 2)"></span>
           </div>
         </div>
+        <div class="project-featured-info">
+          <div class="project-tag">Unity · C# · Arcade Racing</div>
+          <h3 class="project-title">Drift Masters</h3>
+          <p class="project-desc">An arcade drift racing game built in Unity. Players drift through two unique tracks earning combo-based scores. Features a custom wheel physics system, drift scoring with multipliers, speedometer, skid marks, tire smoke effects, lap timer, and a results screen.</p>
+          <div class="project-links">
+            <a href="#" class="project-link youtube-link"><span class="project-link-icon">▶</span> YouTube — Coming Soon</a>
+          </div>
+        </div>
+      </div>
 
+      <!-- OTHER PROJECTS GRID -->
+      <div class="projects-grid">
         <div class="project-card reveal">
           <div class="project-tag">Unity · C# · Prototype</div>
           <h3 class="project-title">Project Gamma</h3>
