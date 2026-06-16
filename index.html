@@ -1189,14 +1189,28 @@
       </div>
 
       <!-- OTHER PROJECTS GRID -->
-      <div class="projects-grid">
-        <div class="project-card reveal">
-          <div class="project-tag">Unity · C# · Prototype</div>
-          <h3 class="project-title">Project Gamma</h3>
-          <p class="project-desc">Another project description here. What genre? What was the core mechanic you were exploring? What technology or technique did you practice?</p>
+      <!-- FEATURED PROJECT - Neon Pulse -->
+      <div class="project-featured reveal">
+        <div class="slideshow" id="neon-slideshow">
+          <img class="slide active" src="NeonPulse_MainMenu.png" alt="Neon Pulse Main Menu" />
+          <img class="slide" src="NeonPulse_GameScene.png" alt="Neon Pulse Gameplay" />
+          <img class="slide" src="NeonPulse_PauseScreen.png" alt="Neon Pulse Pause Screen" />
+          <img class="slide" src="NeonPulse_DeathScreen.png" alt="Neon Pulse Death Screen" />
+          <button class="slide-btn slide-prev" onclick="changeSlide('neon-slideshow', -1)">&#8592;</button>
+          <button class="slide-btn slide-next" onclick="changeSlide('neon-slideshow', 1)">&#8594;</button>
+          <div class="slide-dots">
+            <span class="dot active" onclick="goToSlide('neon-slideshow', 0)"></span>
+            <span class="dot" onclick="goToSlide('neon-slideshow', 1)"></span>
+            <span class="dot" onclick="goToSlide('neon-slideshow', 2)"></span>
+            <span class="dot" onclick="goToSlide('neon-slideshow', 3)"></span>
+          </div>
+        </div>
+        <div class="project-featured-info">
+          <div class="project-tag">Unity · C# · FPS · Wave Shooter</div>
+          <h3 class="project-title">Neon Pulse</h3>
+          <p class="project-desc">A first-person wave shooter built in Unity. Survive 10 waves of increasingly difficult enemies using an AK or shotgun. Features a custom weapon system with ammo tracking, reload animations, two enemy types, health regeneration, score and kill tracking, muzzle flash and blood VFX, and a complete game flow with main menu, pause, death, and victory screens.</p>
           <div class="project-links">
-            <a href="#" class="project-link"><span class="project-link-icon">⟶</span> itch.io</a>
-            <a href="#" class="project-link"><span class="project-link-icon">⟶</span> GitHub</a>
+            <a href="https://github.com/Scorpio2317/GAME3030_NeonPulse" target="_blank" class="project-link"><span class="project-link-icon">⟶</span> GitHub</a>
           </div>
         </div>
       </div>
